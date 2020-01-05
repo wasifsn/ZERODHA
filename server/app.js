@@ -8,7 +8,7 @@ app.use(cors());
 
 if (process.env.NODE_ENV === "production") {
   // static folder
-  app.use(express.static(__dirname + "/public/"));
+  app.use(express.static(__dirname + "/public"));
 
   // SPA
   app.get(/.*/, (req, res) => res.sendFile(__dirname + "/public/index.html"));
@@ -18,6 +18,6 @@ const port = process.env.PORT || 5000;
 const search = require("./routes/api/search");
 app.use("/api", search);
 
-app.listen(5000, process.env.IP, function() {
+app.listen(port, process.env.IP, function() {
   console.log(`the  server has started on ${port}`);
 });
