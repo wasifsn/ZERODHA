@@ -28,7 +28,7 @@ async function scraper() {
     const nseUrl =
       "https://www1.nseindia.com/companytracker/cmtracker.jsp?symbol=INFY&cName=cmtracker_nsedef.css";
     let browser = await puppeteer.launch({
-      // headless: false,
+      headless: false,
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
     });
     let page = await browser.newPage();
