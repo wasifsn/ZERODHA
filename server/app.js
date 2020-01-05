@@ -13,10 +13,11 @@ if (process.env.NODE_ENV === "production") {
   // SPA
   app.get(/.*/, (req, res) => res.sendFile(__dirname + "/public/index.html"));
 }
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
+
 const search = require("./routes/api/search");
 app.use("/api", search);
 
-app.listen(port, function() {
+app.listen(port, process.env.IP, function() {
   console.log(`the  server has started on ${port}`);
 });
