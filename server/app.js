@@ -18,6 +18,6 @@ const port = process.env.PORT || 5000;
 const search = require("./routes/api/search");
 app.use("/api", search);
 
-app.listen(port, process.env.IP, function() {
+app.listen(port, function() {
   console.log(`the  server has started on ${port}`);
 });
