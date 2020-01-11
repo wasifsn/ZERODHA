@@ -35,7 +35,7 @@ async function scraper() {
     let browser = await puppeteer.launch({
       executablePath: path.resolve(
         __dirname,
-        "../../../node_modules/puppeteer/.local-chromium/linux-650583/chrome-linux/chrome"
+        "../../../node_modules/puppeteer/.local-chromium/linux-706915/chrome-linux/chrome"
       ),
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
