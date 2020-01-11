@@ -37,7 +37,7 @@ async function scraper() {
         __dirname,
         "../../../node_modules/puppeteer/.local-chromium/linux-706915/chrome-linux/chrome"
       ),
-      headless: true,
+      headless: false,
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
     });
     let page = await browser.newPage();
