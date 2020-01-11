@@ -48,8 +48,7 @@ async function scraper() {
     // await browser.close();
 
     await page.goto(nseUrl, {
-      waitUntil: "networkidle2",
-      timeout: 60000
+      waitUntil: "networkidle2"
     });
     let data = await page.evaluate(() => {
       let headers = [];
