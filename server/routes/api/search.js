@@ -42,7 +42,6 @@ async function scraper() {
     });
     let page = await browser.newPage();
     await page.goto(nseUrl, {
-      networkIdleTimeout: 5000,
       waitUntil: "networkidle2",
       timeout: 3000000
     });
