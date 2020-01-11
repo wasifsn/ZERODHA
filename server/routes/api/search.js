@@ -26,8 +26,9 @@ router.get("/search", async (req, res) => {
 // method to run scrapper
 async function scraper() {
   try {
-    const nseUrl =
-      "https://www1.nseindia.com/companytracker/cmtracker.jsp?symbol=INFY&cName=cmtracker_nsedef.css";
+    // const nseUrl =
+    //   "https://www1.nseindia.com/companytracker/cmtracker.jsp?symbol=INFY&cName=cmtracker_nsedef.css";
+    const nseUrl = "https://github.com/puppeteer/puppeteer/issues/3330";
     // let browser = await puppeteer.launch({
     //   headless: true,
     //   args: ["--no-sandbox", "--disable-setuid-sandbox"]
@@ -48,52 +49,55 @@ async function scraper() {
     // await browser.close();
 
     await page.goto(nseUrl, {
-      waitUntil: "networkidle2"
+      waitUntil: "networkidle2",
+      timeout: 60000
     });
-    let data = await page.evaluate(() => {
-      let headers = [];
-      let data = "";
-      table1_values = [];
-      table2_values = [];
-      table3_values = [];
-      let a = document.querySelectorAll(".style6");
-      let b = Array.from(a);
-      b.forEach(el => {
-        headers.push(el.textContent);
-      });
+    let dummy = document.querySelector(".shelf-title");
+    console.log(dummy.textContent);
+    // let data = await page.evaluate(() => {
+    //   let headers = [];
+    //   let data = "";
+    //   table1_values = [];
+    //   table2_values = [];
+    //   table3_values = [];
+    //   let a = document.querySelectorAll(".style6");
+    //   let b = Array.from(a);
+    //   b.forEach(el => {
+    //     headers.push(el.textContent);
+    //   });
 
-      let companyName = document.querySelector("nobr").textContent;
+    //   let companyName = document.querySelector("nobr").textContent;
 
-      let raw_tables = Array.from(
-        document.querySelectorAll(
-          "tr:nth-of-type(5)  tr:nth-of-type(2) div table"
-        )
-      );
-      let tables = Array.from(raw_tables);
-      const table1 = tables[0].rows;
-      const table2 = tables[1].rows;
-      const table3 = tables[2].rows;
+    //   let raw_tables = Array.from(
+    //     document.querySelectorAll(
+    //       "tr:nth-of-type(5)  tr:nth-of-type(2) div table"
+    //     )
+    //   );
+    //   let tables = Array.from(raw_tables);
+    //   const table1 = tables[0].rows;
+    //   const table2 = tables[1].rows;
+    //   const table3 = tables[2].rows;
 
-      for (let i in table1) {
-        table1_values.push(String(table1[i].innerText).replace(/\t|_/g, ""));
-      }
-      for (let i in table2) {
-        table2_values.push(String(table2[i].innerText).replace(/\t|_/g, ""));
-      }
-      for (let i in table3) {
-        table3_values.push(String(table3[i].innerText).replace(/\t|_/g, ""));
-      }
-      return {
-        headers,
-        companyName,
-        table1_values,
-        table2_values,
-        table3_values
-      };
-    });
-    console.log(data);
-    return data;
-    await browser.close();
+    //   for (let i in table1) {
+    //     table1_values.push(String(table1[i].innerText).replace(/\t|_/g, ""));
+    //   }
+    //   for (let i in table2) {
+    //     table2_values.push(String(table2[i].innerText).replace(/\t|_/g, ""));
+    //   }
+    //   for (let i in table3) {
+    //     table3_values.push(String(table3[i].innerText).replace(/\t|_/g, ""));
+    //   }
+    //   return {
+    //     headers,
+    //     companyName,
+    //     table1_values,
+    //     table2_values,
+    //     table3_values
+    //   };
+    // });
+    // console.log(data);
+    // return data;
+    // await browser.close();
   } catch (err) {
     console.log(`this is the error in the scrapper function: ${err}`);
   }
