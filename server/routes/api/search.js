@@ -33,10 +33,10 @@ async function scraper() {
     //   args: ["--no-sandbox", "--disable-setuid-sandbox"]
     // });
     let browser = await puppeteer.launch({
-      // executablePath: path.resolve(
-      //   __dirname,
-      //   "../../../node_modules/puppeteer/.local-chromium/linux-650583/chrome-linux/chrome"
-      // ),
+      executablePath: path.resolve(
+        __dirname,
+        "../../../node_modules/puppeteer/.local-chromium/linux-650583/chrome-linux/chrome"
+      ),
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
     });
