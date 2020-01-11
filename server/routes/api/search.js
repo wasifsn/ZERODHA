@@ -41,10 +41,10 @@ async function scraper() {
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
     });
     let page = await browser.newPage();
-    console.log(page);
     await page.setViewport({ width: 1000, height: 500 }); // <-- add await here so it sets viewport after it creates the page
     await page.goto("https://www.google.com/");
-    await page.screenshot({ path: "pic.png" });
+    let image = await page.screenshot({ path: "pic.png" });
+    console.log(image);
     await browser.close();
 
     // await page.goto(nseUrl, {
