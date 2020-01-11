@@ -32,7 +32,7 @@ async function scraper() {
     //   headless: true,
     //   args: ["--no-sandbox", "--disable-setuid-sandbox"]
     // });
-    console.log(nseURL);
+    console.log(nseUrl);
     let browser = await puppeteer.launch({
       executablePath: path.resolve(
         __dirname,
