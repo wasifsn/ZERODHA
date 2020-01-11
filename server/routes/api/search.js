@@ -40,11 +40,10 @@ async function scraper() {
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
     });
-    console.log(browser);
     let page = await browser.newPage();
     await page.goto(nseUrl, {
       waitUntil: "networkidle2",
-      timeout: 300000
+      timeout: 30000
     });
     console.log(page);
     let data = await page.evaluate(() => {
