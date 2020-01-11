@@ -52,8 +52,12 @@ async function scraper() {
       waitUntil: "networkidle2",
       timeout: 60000
     });
-    let dummy = document.querySelector(".shelf-title");
-    console.log(dummy.textContent);
+    let data = await page.evaluate(() => {
+      let dummy = document.querySelector(".shelf-title");
+      console.log(dummy.textContent);
+    });
+    return data;
+    await browser.close();
     // let data = await page.evaluate(() => {
     //   let headers = [];
     //   let data = "";
