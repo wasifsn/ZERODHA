@@ -32,7 +32,6 @@ async function scraper() {
     //   headless: true,
     //   args: ["--no-sandbox", "--disable-setuid-sandbox"]
     // });
-    console.log(nseUrl);
     let browser = await puppeteer.launch({
       executablePath: path.resolve(
         __dirname,
@@ -42,7 +41,11 @@ async function scraper() {
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
     });
     let page = await browser.newPage();
-    await page.goto(nseUrl, { waitUntil: "networkidle2" });
+    await page.goto(nseUrl, {
+      networkIdleTimeout: 5000,
+      waitUntil: "networkidle2",
+      timeout: 3000000
+    });
 
     let data = await page.evaluate(() => {
       let headers = [];
